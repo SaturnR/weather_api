@@ -13,7 +13,7 @@ from weather_api.providers import (
     OpenWeatherClientConfig,
     OpenWeatherMapClient,
 )
-from weather_api.services.weather_service import WeatherService
+from weather_api.services import WeatherService
 from weather_api.storage import MinioStorage, S3Storage, Storage
 
 weather_client = OpenWeatherMapClient(

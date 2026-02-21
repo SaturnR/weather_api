@@ -67,6 +67,7 @@ class OpenWeatherMapClient:
             raise WeatherClientError("City must be a non-empty string.")
 
         try:
+            """
             return {
                 "coord": {"lon": 44.8337, "lat": 41.6941},
                 "weather": [
@@ -104,7 +105,7 @@ class OpenWeatherMapClient:
                 "name": "Tbilisi",
                 "cod": 200,
             }
-
+            """
             request = self._http.build_request(
                 "GET",
                 "/weather",

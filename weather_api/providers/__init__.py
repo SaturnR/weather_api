@@ -1,1 +1,5 @@
-from .open_weather_client import OpenWeatherClientConfig, OpenWeatherMapClient
+from .open_weather_client import (
+    CityNotFoundError,
+    OpenWeatherClientConfig,
+    OpenWeatherMapClient,
+)

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from weather_api.dependencies import settings
+from weather_api.config import settings
 from weather_api.event_logging import EventLogger
 from weather_api.providers import OpenWeatherMapClient
 
