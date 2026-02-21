@@ -21,9 +21,9 @@ class WeatherService:
     async def get_weather(self, city: str):
         city_key = city.lower().strip()
 
-        # cached = await self._cache.get(city_key)
-        # if cached:
-        #    return cached
+        cached = await self._cache.get(city_key)
+        if cached:
+            return cached
 
         weather_data = await self._weather_client.get_current_weather(city)
 
