@@ -1,0 +1,9 @@
+# python
+*__pycache__
+*.pyc
+
+# temp db file
+*.db
+
+# Exclude private env file
+.env
