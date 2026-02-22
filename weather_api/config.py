@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     )
 
     app_name: str = "Weather API"
-    base_url: str = "/weather"
+    api_prefix: str = "/api/v1"
     environment: str = "local"
     openweather_api_key: str
     openweather_base_url: str = "https://api.openweathermap.org/data/2.5"

@@ -19,7 +19,7 @@ def create_app() -> FastAPI:
         title=settings.app_name,
         version="1.0.0",
     )
-    app.include_router(weather_router)
+    app.include_router(weather_router, prefix=settings.api_prefix)
     app.state.settings = settings
 
     return app
