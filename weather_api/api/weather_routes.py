@@ -15,4 +15,6 @@ async def get_weather(
     city: str = Query(..., description="City name", min_length=1),
     service: WeatherService = Depends(get_weather_service),
 ):
+    logger.debug("*********************************")
+
     return await service.get_weather(city)

@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 
 from weather_api.config import settings
 from weather_api.event_logging import EventLogger
@@ -27,7 +27,7 @@ class WeatherService:
 
         weather_data = await self._weather_client.get_current_weather(city)
 
-        timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+        timestamp = datetime.datetime.now(datetime.UTC).strftime("%Y%m%d%H%M%S")
         filename = f"{city_key}_{timestamp}.json"
 
         await self._storage.save(filename, weather_data)
