@@ -1,12 +1,9 @@
 from __future__ import annotations
 
-import logging
 from dataclasses import dataclass
 from typing import Any
 
 import httpx
-
-logger = logging.getLogger(__name__)
 
 
 class WeatherClientError(Exception):
@@ -67,45 +64,6 @@ class OpenWeatherMapClient:
             raise WeatherClientError("City must be a non-empty string.")
 
         try:
-            """
-            return {
-                "coord": {"lon": 44.8337, "lat": 41.6941},
-                "weather": [
-                    {
-                        "id": 800,
-                        "main": "Clear",
-                        "description": "clear sky",
-                        "icon": "01n",
-                    }
-                ],
-                "base": "stations",
-                "main": {
-                    "temp": 3.84,
-                    "feels_like": 3.84,
-                    "temp_min": 3.84,
-                    "temp_max": 3.84,
-                    "pressure": 1029,
-                    "humidity": 52,
-                    "sea_level": 1029,
-                    "grnd_level": 957,
-                },
-                "visibility": 10000,
-                "wind": {"speed": 0.51, "deg": 0},
-                "clouds": {"all": 0},
-                "dt": 1771622950,
-                "sys": {
-                    "type": 1,
-                    "id": 8862,
-                    "country": "GE",
-                    "sunrise": 1771645704,
-                    "sunset": 1771684834,
-                },
-                "timezone": 14400,
-                "id": 611717,
-                "name": "Tbilisi",
-                "cod": 200,
-            }
-            """
             request = self._http.build_request(
                 "GET",
                 "/weather",
@@ -115,7 +73,6 @@ class OpenWeatherMapClient:
                     "units": units,
                 },
             )
-            logger.debug("Calling weather API", extra={"url": str(request.url)})
             resp = await self._http.send(request)
         except httpx.TimeoutException as e:
             raise WeatherProviderUnavailableError("Provider request timed out.") from e

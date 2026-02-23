@@ -2,6 +2,8 @@ services:
   api:
     volumes:
       - ./data:/app/data
+      - ./weather_api:/app/weather_api
+      - ./tests:/app/tests
     build:
       context: .
       dockerfile: Dockerfile
@@ -40,6 +42,8 @@ services:
 
   test:
     build: .
+    volumes:
+      - .:/app
     command: poetry run pytest
     depends_on:
       - redis
